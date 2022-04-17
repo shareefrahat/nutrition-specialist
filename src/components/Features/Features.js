@@ -36,7 +36,7 @@ const Features = () => {
             />
           </div>
           <div className="mx-10">
-            <h4 className="lg:text-left text-xl lg:text-4xl my-5 lg:w-[500px]  font-semibold">
+            <h4 className="lg:text-left text-xl lg:text-4xl my-5 lg:w-[500px] font-semibold">
               Fuel for the <br /> Marathon of Life
             </h4>
             <p className="text-justify  lg:w-[500px] text-md lg:text-xl text-gray-500 font-serif">
