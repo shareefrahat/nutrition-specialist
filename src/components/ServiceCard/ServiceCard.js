@@ -9,7 +9,7 @@ const ServiceCard = ({ service }) => {
     <>
       <div
         onClick={() => navigate("/checkout")}
-        className="shadow-md bg-white mx-auto w-fit rounded-xl p-4 border-2
+        className="shadow-md bg-white mx-auto w-fit rounded-md p-4 border-2
       transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110  duration-300
       "
       >
