@@ -1,7 +1,14 @@
 import React from "react";
 
-const ServiceCard = () => {
-  return <div></div>;
+const ServiceCard = ({ service }) => {
+  const { name } = service;
+  return (
+    <>
+      <div>
+        <p>{name}</p>
+      </div>
+    </>
+  );
 };
 
 export default ServiceCard;

@@ -1,9 +1,10 @@
 import React from "react";
 import useServices from "../../utilities/useServices";
+import ServiceCard from "../ServiceCard/ServiceCard";
 
 const Services = () => {
   const [services] = useServices();
-  console.log(services);
+
   return (
     <>
       <section>
@@ -11,7 +12,17 @@ const Services = () => {
           Services
         </h2>
       </section>
-      <section>cards</section>
+      <section>
+        {!services ? (
+          <div>loading</div>
+        ) : (
+          <div>
+            {services.map((service) => (
+              <ServiceCard key={service.id} service={service}></ServiceCard>
+            ))}
+          </div>
+        )}
+      </section>
     </>
   );
 };
