@@ -1,12 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
 
 const SignupForm = () => {
+  const [createUserWithEmailAndPassword, user, loading, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const navigate = useNavigate();
+
+  const handleSignup = async (event) => {
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
+    navigate("/");
+  };
+
   return (
     <>
       <div className="p-4 border border-green-800 shadow-xl w-fit mx-auto rounded my-10">
-        <form>
+        <form onSubmit={handleSignup}>
           <div className="flex justify-between items-center border border-green-800 rounded  mb-8">
             <div className="bg-white  w-full text-lg py-2 hover:text-green-800 rounded">
               <Link to="/login">Login</Link>
@@ -22,7 +43,7 @@ const SignupForm = () => {
                 <input
                   className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
                   type="text"
-                  name="username"
+                  name="name"
                   id="user-name"
                   required
                 />
@@ -58,7 +79,7 @@ const SignupForm = () => {
                 <input
                   className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
                   type="password"
-                  name="confirm-password"
+                  name="confirmPassword"
                   id="confirm-password"
                   required
                 />
