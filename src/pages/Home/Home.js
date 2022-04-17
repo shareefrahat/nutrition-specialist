@@ -1,4 +1,5 @@
 import React from "react";
+import Features from "../../components/Features/Features";
 import TopBanner from "../../components/TopBanner/TopBanner";
 
 const Home = () => {
@@ -7,6 +8,10 @@ const Home = () => {
       <section>
         <TopBanner></TopBanner>
       </section>
+      <section>
+        <Features></Features>
+      </section>
+      <section>service</section>
     </>
   );
 };
