@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -8,6 +8,8 @@ import auth from "../../firebase.init";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
 
 const SignupForm = () => {
+  const [agree, setAgree] = useState(false);
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
@@ -93,9 +95,26 @@ const SignupForm = () => {
                 Login
               </Link>
             </div>
+            <div className="flex items-center">
+              <input
+                onClick={() => setAgree(!agree)}
+                className="h-5 w-5 accent-green-800 rounded mx-2"
+                type="checkbox"
+                name="check"
+                id="agree"
+              />
+              <label className="text-md text-slate-500" htmlFor="agree">
+                I agree with terms & conditions
+              </label>
+            </div>
             <div>
               <button
-                className="bg-yellow-400 text-slate-900 px-5 py-2 font-bold  rounded hover:shadow-md shadow-none my-2"
+                disabled={!agree}
+                className={`${
+                  !agree
+                    ? "bg-gray-400 cursor-not-allowed"
+                    : "bg-yellow-400 cursor-pointer"
+                } text-slate-900 px-5 py-2 font-bold  rounded hover:shadow-md shadow-none my-2`}
                 type="submit"
               >
                 Sign Up
