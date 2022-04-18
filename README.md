@@ -8,7 +8,7 @@
 
 - Live Site Link:
 
-### Features and Functionality
+## Features
 
 - Responsive for both Mobile and Large Device
 - Service Card has animation on hover
@@ -18,7 +18,7 @@
 - Accordion for blogs or FAQ sections
 - Login and Logout Toggle system, and so on
 
-### Techs Stuff
+## Techs Stuff
 
 - React
 - Tailwind
