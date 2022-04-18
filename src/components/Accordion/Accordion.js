@@ -8,6 +8,8 @@ const Accordion = () => {
           <h2 className="accordion-header mb-0" id="headingOne ">
             <button
               className="
+              text-md lg:text-xl
+              font-serif
               font-semibold
         accordion-button
         relative
@@ -59,6 +61,8 @@ const Accordion = () => {
           <h2 className="accordion-header mb-0" id="headingTwo">
             <button
               className="
+              text-md lg:text-xl
+              font-serif
               font-semibold
         accordion-button
         collapsed
@@ -121,6 +125,8 @@ const Accordion = () => {
           <h2 className="accordion-header mb-0" id="headingThree">
             <button
               className="
+              text-md lg:text-xl
+              font-serif
               font-semibold
         accordion-button
         collapsed
@@ -144,7 +150,7 @@ const Accordion = () => {
               aria-controls="collapseThree"
             >
               What other services does `firebase` provide other than
-              authentication
+              authentication?
             </button>
           </h2>
           <div

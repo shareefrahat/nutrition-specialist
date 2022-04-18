@@ -6,7 +6,7 @@
 
 - Private Repository Link: https://github.com/programming-hero-web-course-4/independent-service-provider-shareefrahat
 
-- Live Site Link:
+- Live Site Link: https://nutrition-specialist.web.app
 
 ## Features
 
