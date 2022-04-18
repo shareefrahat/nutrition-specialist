@@ -14,11 +14,14 @@ const SignupForm = () => {
 
   const [agree, setAgree] = useState(false);
 
-  const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(
-    auth,
-    { sendEmailVerification: true }
-  );
+  const [createUserWithEmailAndPassword, error] =
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile] = useUpdateProfile(auth);
+
+  let errorElement;
+  if (error) {
+    errorElement = <p className="text-red-700">{error?.message}</p>;
+  }
 
   const handlePassword = (event) => {
     const password = event.target.value;
@@ -147,6 +150,7 @@ const SignupForm = () => {
                 Login
               </Link>
             </div>
+            <div>{errorElement}</div>
             <div className="flex items-center">
               <input
                 onClick={() => setAgree(!agree)}
