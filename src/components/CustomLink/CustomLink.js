@@ -9,7 +9,7 @@ const CustomLink = ({ children, to, ...props }) => {
       <Link
         className={
           match
-            ? " text-lg lg:text-xl text-green-800 border-b-4 border-b-green-800 p-2 rounded-sm"
+            ? " text-lg lg:text-xl text-green-800 border-b-4 border-b-orange-600 p-2 rounded-sm"
             : "text-green-800 text-lg lg:text-xl p-2 border-b-4  border-transparent hover:border-b-gray-300 rounded-sm"
         }
         to={to}

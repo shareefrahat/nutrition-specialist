@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import banner from "../../images/banner.jpg";
 const TopBanner = () => {
   return (
@@ -26,9 +27,12 @@ const TopBanner = () => {
             >
               I can help you to maintain nutrition in your body
             </p>
-            <button className="px-2 lg:px-4 py-1 lg:py-2 bg-green-800 text-white text-md lg:text-2xl rounded-md shadow-xl w-fit mx-auto my-4 lg:my-8 hover:bg-white hover:text-green-800 border-2 border-white hover:border-green-800">
+            <Link
+              to="/checkout"
+              className="px-2 lg:px-4 py-1 lg:py-2 bg-green-800 text-white text-md lg:text-2xl rounded-md shadow-xl w-fit mx-auto my-4 lg:my-8 hover:bg-orange-600 border-2 border-white"
+            >
               Book A Session
-            </button>
+            </Link>
           </div>
         </section>
       </div>

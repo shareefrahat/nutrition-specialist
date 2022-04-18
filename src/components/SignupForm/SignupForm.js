@@ -80,7 +80,7 @@ const SignupForm = () => {
         draggable
         pauseOnHover
       />
-      <div className="p-4 border border-green-800 shadow-xl w-fit mx-auto rounded my-10">
+      <div className="p-4 border border-orange-600 shadow-xl w-fit mx-auto rounded my-10">
         <form onSubmit={handleSignup}>
           <div className="flex justify-between items-center border border-green-800 rounded  mb-8">
             <div className="bg-white  w-full text-lg py-2 hover:text-green-800 rounded">
@@ -95,7 +95,7 @@ const SignupForm = () => {
               <label htmlFor="user-name">Name:</label>
               <div>
                 <input
-                  className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                  className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded"
                   type="text"
                   name="name"
                   id="user-name"
@@ -107,7 +107,7 @@ const SignupForm = () => {
               <label htmlFor="user-email">Email:</label>
               <div>
                 <input
-                  className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                  className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded"
                   type="email"
                   name="email"
                   id="user-email"
@@ -120,7 +120,7 @@ const SignupForm = () => {
               <div>
                 <input
                   onBlur={handlePassword}
-                  className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                  className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded"
                   type="password"
                   name="password"
                   id="user-password"
@@ -133,7 +133,7 @@ const SignupForm = () => {
               <div>
                 <input
                   onBlur={handleConfirmPassword}
-                  className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                  className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded"
                   type="password"
                   name="confirmPassword"
                   id="confirm-password"
@@ -168,9 +168,9 @@ const SignupForm = () => {
                 disabled={!agree}
                 className={`${
                   !agree
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-yellow-400 cursor-pointer"
-                } text-slate-900 px-5 py-2 font-bold  rounded hover:shadow-md shadow-none my-2`}
+                    ? "bg-gray-500 cursor-not-allowed"
+                    : "bg-green-800 hover:bg-orange-600 cursor-pointer"
+                } text-white px-5 py-2 font-bold  rounded hover:shadow-md shadow-none my-2`}
                 type="submit"
               >
                 Sign Up

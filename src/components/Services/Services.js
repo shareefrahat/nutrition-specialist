@@ -8,7 +8,7 @@ const Services = () => {
   return (
     <>
       <section>
-        <h2 className="text-2xl lg:text-4xl font-semibold border-b-4 border-b-green-800 w-fit mx-auto rounded-sm text-gray-800">
+        <h2 className="text-2xl lg:text-4xl font-semibold border-b-4 border-b-orange-600 w-fit mx-auto rounded-sm text-green-800">
           Services
         </h2>
       </section>

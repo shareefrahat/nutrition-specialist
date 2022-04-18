@@ -4,7 +4,11 @@ import sharifImg from "../../images/sharif.jpg";
 const About = () => {
   return (
     <div>
-      <section>About Me</section>
+      <section className="mt-5 mb-10">
+        <h3 className="text-xl lg:text-2xl font-semibold border-b-4 border-b-orange-600 w-fit mx-auto rounded-sm text-green-800">
+          About Me
+        </h3>
+      </section>
       <section>
         <div className="my-10 px-10">
           <div>

@@ -70,7 +70,7 @@ const LoginForm = () => {
         draggable
         pauseOnHover
       />
-      <div className="p-4 border border-green-800 shadow-xl w-fit mx-auto rounded my-10">
+      <div className="p-4 border border-orange-600 shadow-xl w-fit mx-auto rounded my-10">
         <form onSubmit={handleLogin}>
           <div className="flex justify-between items-center border border-green-800 rounded  mb-8">
             <div className=" bg-green-800 text-white w-full text-lg py-2 rounded">
@@ -85,7 +85,7 @@ const LoginForm = () => {
               <label htmlFor="user-email">Email:</label>
               <p>
                 <input
-                  className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                  className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded"
                   ref={emailRef}
                   type="email"
                   name="email"
@@ -98,7 +98,7 @@ const LoginForm = () => {
               <label htmlFor="user-password">Password:</label>
               <p>
                 <input
-                  className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                  className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded"
                   ref={passwordRef}
                   type="password"
                   name="password"
@@ -128,7 +128,7 @@ const LoginForm = () => {
             </div>
             <div>
               <button
-                className="bg-yellow-400 text-slate-900 px-5 py-2 font-bold  rounded hover:shadow-md shadow-none my-2"
+                className="bg-green-800 hover:bg-orange-600 text-white px-5 py-2 font-bold  rounded hover:shadow-md shadow-none my-2"
                 type="submit"
               >
                 Login

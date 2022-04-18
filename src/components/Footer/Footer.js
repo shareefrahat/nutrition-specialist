@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="bg-green-900 text-white p-5 text-md lg:text-xl font-serif mt-60">
+      <footer className="bg-green-900 text-white p-10 text-md lg:text-xl font-serif mt-[400px]">
         <p>&copy; Copyright {year} | NutriFix</p>
       </footer>
     </>

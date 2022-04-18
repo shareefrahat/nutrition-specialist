@@ -21,7 +21,7 @@ const Checkout = () => {
               Steps To Get Service
             </h2>
           </section>
-          <section className="shadow-lg border border-green-800 w-fit mx-auto p-5 rounded">
+          <section className="shadow-lg border border-orange-600 w-fit mx-auto p-5 rounded">
             <form onSubmit={handleCheckout}>
               <h4 className="inline-block text-md font-bold mb-5 text-xl md:text-2xl px-2 text-slate-900 font-serif">
                 Service Form
@@ -31,7 +31,7 @@ const Checkout = () => {
                   <label htmlFor="user-name">Name:</label>
                   <div>
                     <input
-                      className="px-4 py-2 border bg-gray-200 border-gray-400 focus:border-yellow-500 outline-none rounded"
+                      className="px-4 py-2 border bg-gray-200 border-gray-400 focus:border-orange-600 outline-none rounded"
                       value={user?.displayName}
                       type="text"
                       name="username"
@@ -45,7 +45,7 @@ const Checkout = () => {
                   <label htmlFor="user-email">Email:</label>
                   <div>
                     <input
-                      className="px-4 py-2 border bg-gray-200 border-gray-400 focus:border-yellow-500 outline-none rounded"
+                      className="px-4 py-2 border bg-gray-200 border-gray-400 focus:border-orange-600 outline-none rounded"
                       value={user?.email}
                       type="email"
                       name="email"
@@ -59,7 +59,7 @@ const Checkout = () => {
                   <label htmlFor="user-email">Phone:</label>
                   <div>
                     <input
-                      className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                      className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded"
                       type="number"
                       name="phone"
                       required
@@ -70,7 +70,7 @@ const Checkout = () => {
                   <label htmlFor="user-email">Choose Date:</label>
                   <div>
                     <input
-                      className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded bg-white"
+                      className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded bg-white"
                       type="date"
                       name="date"
                       required
@@ -81,7 +81,7 @@ const Checkout = () => {
                   <label htmlFor="user-email">Choose Service:</label>
                   <div>
                     <select
-                      className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded bg-white"
+                      className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded bg-white"
                       required
                     >
                       <option value="A">Mean & Diet Plan</option>
@@ -94,7 +94,7 @@ const Checkout = () => {
                   <label htmlFor="user-name">Description:</label>
                   <div>
                     <textarea
-                      className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                      className="px-4 py-2 border border-gray-400 focus:border-orange-600 outline-none rounded"
                       name=""
                       id=""
                       cols="22"
@@ -104,7 +104,7 @@ const Checkout = () => {
                 </div>
                 <div>
                   <button
-                    className="bg-green-800 text-white px-5 py-2 font-bold  rounded hover:shadow-md shadow-none my-2"
+                    className="bg-green-800 hover:bg-orange-600 text-white px-5 py-2 font-bold  rounded hover:shadow-md shadow-none my-2"
                     type="submit"
                   >
                     Confirm Checkout
