@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <>
       <footer className="bg-green-900 text-white p-5 text-md lg:text-xl font-serif mt-60">
-        <p>&copy; Copyright {year} | Nutrition Specialist</p>
+        <p>&copy; Copyright {year} | NutriFix</p>
       </footer>
     </>
   );

@@ -12,7 +12,7 @@ const Header = () => {
       <header className="bg-white px-5 py-2 flex flex-row justify-between items-center shadow-md">
         <section>
           <h1 className="text-green-800 text-xl lg:text-3xl font-serif font-bold">
-            Nutrition Specialist
+            NutriFix
           </h1>
         </section>
         <section className="flex flex-row-reverse lg:flex-row justify-evenly items-center">

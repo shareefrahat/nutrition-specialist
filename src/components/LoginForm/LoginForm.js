@@ -6,7 +6,6 @@ import {
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
-import Spinner from "../Spinner/Spinner";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -14,18 +13,14 @@ const LoginForm = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
 
-  const [signInWithEmailAndPassword, loading, error] =
+  const [signInWithEmailAndPassword, error] =
     useSignInWithEmailAndPassword(auth);
 
-  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
   let errorElement;
 
-  if (loading || sending) {
-    return <Spinner></Spinner>;
-  }
-
   if (error) {
-    errorElement = <p className="text-red-700">Error: {error?.message}</p>;
+    errorElement = <p className="text-red-700">{error?.message}</p>;
   }
 
   const handleLogin = (event) => {
@@ -64,6 +59,17 @@ const LoginForm = () => {
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <div className="p-4 border border-green-800 shadow-xl w-fit mx-auto rounded my-10">
         <form onSubmit={handleLogin}>
           <div className="flex justify-between items-center border border-green-800 rounded  mb-8">
@@ -147,17 +153,6 @@ const LoginForm = () => {
           </div>
         </div>
       </div>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </>
   );
 };
