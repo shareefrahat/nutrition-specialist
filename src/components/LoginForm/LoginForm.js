@@ -1,15 +1,32 @@
 import React, { useRef } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import Spinner from "../Spinner/Spinner";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const LoginForm = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
 
-  const [signInWithEmailAndPassword, user, loading, error] =
+  const [signInWithEmailAndPassword, loading, error] =
     useSignInWithEmailAndPassword(auth);
+
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+  let errorElement;
+
+  if (loading || sending) {
+    return <Spinner></Spinner>;
+  }
+
+  if (error) {
+    errorElement = <p className="text-red-700">Error: {error?.message}</p>;
+  }
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -17,6 +34,32 @@ const LoginForm = () => {
     const password = passwordRef.current.value;
 
     signInWithEmailAndPassword(email, password);
+  };
+
+  const resetPassword = async () => {
+    const email = emailRef.current.value;
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast.success("Password reset email sent", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.error("Please enter email to reset password", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   return (
@@ -66,6 +109,17 @@ const LoginForm = () => {
                 Sign Up
               </Link>
             </div>
+            <div>{errorElement}</div>
+            <div>
+              <span className="text-md text-slate-500">Forget Password?</span>
+              <button
+                onClick={resetPassword}
+                className="text-md text-blue-700 mx-2"
+                type="button"
+              >
+                Reset Password
+              </button>
+            </div>
             <div>
               <button
                 className="bg-yellow-400 text-slate-900 px-5 py-2 font-bold  rounded hover:shadow-md shadow-none my-2"
@@ -93,6 +147,17 @@ const LoginForm = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };

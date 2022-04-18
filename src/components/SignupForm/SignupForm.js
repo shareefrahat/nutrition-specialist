@@ -1,29 +1,84 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
 import GoogleLogin from "../GoogleLogin/GoogleLogin";
+import Spinner from "../Spinner/Spinner";
 
 const SignupForm = () => {
+  const nameRef = useRef("");
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
+  // const confirmPasswordRef = useRef("");
+  const [confirmPassword, setConfirmPassword] = useState({ error: "" });
+
   const [agree, setAgree] = useState(false);
 
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const navigate = useNavigate();
 
+  let errorElement;
+  // let passwordError;
+
+  if (loading || updating) {
+    return <Spinner></Spinner>;
+  }
+
+  if (error || updateError) {
+    errorElement = (
+      <p className="text-red-700">
+        Error: {error?.message || updateError?.message}
+      </p>
+    );
+  }
+
+  const handleConfirmPassword = (e) => {
+    const confirmPassword = e.target.value;
+
+    if (confirmPassword === passwordRef.current.value) {
+      console.log("password matched");
+      setConfirmPassword({ error: "" });
+    } else {
+      setConfirmPassword({ error: "password not matched" });
+    }
+  };
+
   const handleSignup = async (event) => {
     event.preventDefault();
-    const name = event.target.name.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-
-    await createUserWithEmailAndPassword(email, password);
-    await updateProfile({ displayName: name });
-    navigate("/");
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    if (confirmPassword.error) {
+      toast.error("Password Not Matched", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      return;
+    } else {
+      await createUserWithEmailAndPassword(email, password);
+      await updateProfile({ displayName: name });
+      toast.success("Verification email sent", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      navigate("/");
+    }
   };
 
   return (
@@ -44,6 +99,7 @@ const SignupForm = () => {
               <div>
                 <input
                   className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                  ref={nameRef}
                   type="text"
                   name="name"
                   id="user-name"
@@ -56,6 +112,7 @@ const SignupForm = () => {
               <div>
                 <input
                   className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                  ref={emailRef}
                   type="email"
                   name="email"
                   id="user-email"
@@ -68,6 +125,7 @@ const SignupForm = () => {
               <div>
                 <input
                   className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                  ref={passwordRef}
                   type="password"
                   name="password"
                   id="user-password"
@@ -79,12 +137,15 @@ const SignupForm = () => {
               <label htmlFor="confirm-password">Confirm Password:</label>
               <div>
                 <input
+                  onBlur={handleConfirmPassword}
                   className="px-4 py-2 border border-gray-400 focus:border-yellow-500 outline-none rounded"
+                  // ref={confirmPasswordRef}
                   type="password"
                   name="confirmPassword"
                   id="confirm-password"
                   required
                 />
+                <p className="text-red-700">{confirmPassword.error}</p>
               </div>
             </div>
             <div>
@@ -107,6 +168,7 @@ const SignupForm = () => {
                 I agree with terms & conditions
               </label>
             </div>
+            <div>{errorElement}</div>
             <div>
               <button
                 disabled={!agree}
@@ -139,6 +201,17 @@ const SignupForm = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 };

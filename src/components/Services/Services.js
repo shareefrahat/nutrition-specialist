@@ -1,5 +1,5 @@
 import React from "react";
-import useServices from "../../utilities/useServices";
+import useServices from "../../hooks/useServices";
 import ServiceCard from "../ServiceCard/ServiceCard";
 
 const Services = () => {
