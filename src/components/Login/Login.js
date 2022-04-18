@@ -19,7 +19,6 @@ const Login = () => {
 
   return (
     <>
-      <section>Login Heading</section>
       <section>
         <LoginForm></LoginForm>
       </section>

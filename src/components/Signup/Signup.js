@@ -18,7 +18,6 @@ const Signup = () => {
   });
   return (
     <>
-      <section>signup heading</section>
       <section>
         <SignupForm></SignupForm>
       </section>
