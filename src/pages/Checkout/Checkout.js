@@ -17,13 +17,13 @@ const Checkout = () => {
       {!confirm ? (
         <div>
           <section>
-            <h2 className="text-green-800 text-2xl lg:text-4xl font-bold my-10 font-serif">
+            <h2 className="text-green-800 text-xl lg:text-2xl font-bold my-10 border-b-4 border-orange-600 w-fit mx-auto rounded-sm">
               Steps To Get Service
             </h2>
           </section>
           <section className="shadow-lg border border-orange-600 w-fit mx-auto p-5 rounded">
             <form onSubmit={handleCheckout}>
-              <h4 className="inline-block text-md font-bold mb-5 text-xl md:text-2xl px-2 text-slate-900 font-serif">
+              <h4 className="inline-block text-md font-bold mb-5 text-lg md:text-xl px-2 text-gray-700 ">
                 Service Form
               </h4>
               <div className="text-left flex flex-col gap-4 justify-center items-center px-2 md:px-6 text-lg">
